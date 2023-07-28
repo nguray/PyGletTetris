@@ -238,7 +238,7 @@ class Tetromino:
                     break
         return fHit
 
-    def goOutLimits(self)->bool:
+    def isOutLimits(self)->bool:
         for [vx,vy] in self.v:
             x = vx*CELL_SIZE + self.x
             y = vy*CELL_SIZE + self.y
