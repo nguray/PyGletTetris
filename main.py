@@ -92,21 +92,27 @@ class Tetromino:
         '''rotate shape to the left'''
         if self.pieceShape == TetrominoShape.SquareShape:
             return
-        for i in range(4):
-            x = self.v[i][1]
-            y = -self.v[i][0] 
-            self.v[i][0] = x
-            self.v[i][1] = y
+        for id,[vx,vy] in enumerate(self.v):
+            self.v[id][0] = vy
+            self.v[id][1] = -vx
+        # for i in range(4):
+        #     x = self.v[i][1]
+        #     y = -self.v[i][0] 
+        #     self.v[i][0] = x
+        #     self.v[i][1] = y
 
     def rotateRight(self):
         '''rotate shape to the right'''        
         if self.pieceShape == TetrominoShape.SquareShape:
             return
-        for i in range(4):
-            x = -self.v[i][1]
-            y = self.v[i][0] 
-            self.v[i][0] = x
-            self.v[i][1] = y
+        for id,[vx,vy] in enumerate(self.v):
+            self.v[id][0] = -vy
+            self.v[id][1] = vx
+        # for i in range(4):
+        #     x = -self.v[i][1]
+        #     y = self.v[i][0] 
+        #     self.v[i][0] = x
+        #     self.v[i][1] = y
 
     def minX(self)->int:
         '''returns min x value'''
@@ -137,22 +143,22 @@ class Tetromino:
         return m
     
     def leftCell(self):
-        mx = self.v[0][0]
-        imin = 0
+        left_x = self.v[0][0]
+        left_y = self.v[0][1]
         for i in range(1,4):
-            if self.v[i][0]<mx:
-                mx = self.v[i][0]
-                imin = i
-        return self.v[imin][0],self.v[imin][1]
+            if self.v[i][0]<left_x:
+                left_x = self.v[i][0]
+                left_y = self.v[i][1]
+        return left_x,left_y
 
     def rightCell(self):
-        mx = self.v[0][0]
-        imax = 0
+        right_x = self.v[0][0]
+        right_y = self.v[0][1]
         for i in range(1,4):
-            if self.v[i][0]>mx:
-                mx = self.v[i][0]
-                imax = i
-        return self.v[imax][0],self.v[imax][1]
+            if self.v[i][0]>right_x:
+                right_x = self.v[i][0]
+                right_y = self.v[i][1]
+        return right_x,right_y
 
     def iX(self)->int:
         ix = int((self.x)/CELL_SIZE)
