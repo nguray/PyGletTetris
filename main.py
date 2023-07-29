@@ -1,5 +1,5 @@
 """     Simple Tetris using PyGlet  """
-"""             2023                """
+"""             July 2023           """
 """      Raymond NGUYEN THANH       """
 
 from enum import IntEnum, unique
