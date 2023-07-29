@@ -95,11 +95,6 @@ class Tetromino:
         for id,[vx,vy] in enumerate(self.v):
             self.v[id][0] = vy
             self.v[id][1] = -vx
-        # for i in range(4):
-        #     x = self.v[i][1]
-        #     y = -self.v[i][0] 
-        #     self.v[i][0] = x
-        #     self.v[i][1] = y
 
     def rotateRight(self):
         '''rotate shape to the right'''        
@@ -108,11 +103,6 @@ class Tetromino:
         for id,[vx,vy] in enumerate(self.v):
             self.v[id][0] = -vy
             self.v[id][1] = vx
-        # for i in range(4):
-        #     x = -self.v[i][1]
-        #     y = self.v[i][0] 
-        #     self.v[i][0] = x
-        #     self.v[i][1] = y
 
     def minX(self)->int:
         '''returns min x value'''
@@ -463,7 +453,6 @@ class Fenetre(Window):
                 if self.board[x + y * NB_COLUMNS] == 0 :
                     f_complete = False
                     break
-            
             if f_complete :
                 nbL += 1
         return nbL
@@ -495,7 +484,7 @@ class Fenetre(Window):
             self.idTetroBag += 1
         else:
             # Shuttle Bag
-            for i in range(14):
+            for _ in range(14):
                 iSrc = randint(0, 13)
                 ityp = self.tetroBag[iSrc]
                 self.tetroBag[iSrc] = self.tetroBag[0]
@@ -562,12 +551,8 @@ class Fenetre(Window):
                 else:
                     lblValue.color = (55, 55, 0, 255)
                 lblName.color = lblValue.color
-
-        for lbl in listHighScoresNames:
-            lbl.draw()
-
-        for lbl in listHighScoresValues:
-            lbl.draw()
+            lblName.draw()
+            lblValue.draw()
 
         title_label.draw()
 
