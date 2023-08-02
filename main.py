@@ -762,6 +762,7 @@ class Fenetre(Window):
                                 if (self.curTetromino.x % CELL_SIZE)==0:
                                     _x = self.curTetromino.minX() + self.curTetromino.iX()
                                     if  _x > 0:
+                                        self.curTetromino.velocityX = -1
                                         if not (self.curTetromino.hitLeft(self.board)):
                                             self.curTetromino.x += self.curTetromino.velocityX
 
