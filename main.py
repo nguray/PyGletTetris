@@ -132,24 +132,6 @@ class Tetromino:
             m = max(m, vy)
         return m
     
-    def leftCell(self):
-        left_x = self.v[0][0]
-        left_y = self.v[0][1]
-        for i in range(1,4):
-            if self.v[i][0]<left_x:
-                left_x = self.v[i][0]
-                left_y = self.v[i][1]
-        return left_x,left_y
-
-    def rightCell(self):
-        right_x = self.v[0][0]
-        right_y = self.v[0][1]
-        for i in range(1,4):
-            if self.v[i][0]>right_x:
-                right_x = self.v[i][0]
-                right_y = self.v[i][1]
-        return right_x,right_y
-
     def iX(self)->int:
         ix = int((self.x)/CELL_SIZE)
         return ix
@@ -158,7 +140,7 @@ class Tetromino:
         iy = int((self.y)/CELL_SIZE)
         return iy
     
-    def hitGround(self, board)->bool:
+    def hitGround(self, board: list[int])->bool:
         
         for [vx,vy] in self.v:
 
@@ -195,7 +177,7 @@ class Tetromino:
                 
         return False
 
-    def hitLeft(self, board)->bool:
+    def hitLeft(self, board: list[int])->bool:
         self.velocityX = -1
         fHit = False
         for [vx,vy] in self.v:
@@ -215,7 +197,7 @@ class Tetromino:
                     break
         return fHit
     
-    def hitRight(self,board)->bool:
+    def hitRight(self,board: list[int])->bool:
         fHit = False
         for [vx,vy] in self.v:
             x = vx*CELL_SIZE + self.x + CELL_SIZE
