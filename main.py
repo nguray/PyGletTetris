@@ -3,13 +3,15 @@
 """      Raymond NGUYEN THANH       """
 
 from enum import IntEnum, unique
+import random
 import pyglet
 from pyglet.window import Window
 from pyglet.shapes import Rectangle
 from pyglet.window import key
 from pyglet import clock
-from random import randint
+from random import randint,seed
 from os import path
+from datetime import datetime
 
 # Constants
 WIN_WIDTH = 480
@@ -266,6 +268,8 @@ class Fenetre(Window):
         self.set_caption('Tetris 0.01')
         pyglet.font.add_file('sansation.ttf')
         self.sansation = pyglet.font.load('sansation')
+        now = datetime.now()
+        random.seed(now.second)
         self.soundSucces = pyglet.resource.media('109662__grunz__success.wav', streaming=False)
         self.soundSucces.volume = 0.05
         self.myplayer = pyglet.media.Player()
