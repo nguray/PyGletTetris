@@ -846,7 +846,8 @@ class Fenetre(Window):
             self.elapseTime2 = 0
             self.nextTetromino.rotateLeft()
 
-fenetre = Fenetre(WIN_WIDTH,WIN_HEIGHT)
-clock.schedule_interval(fenetre.on_update,1/100)
 
-pyglet.app.run()
+if __name__ == "__main__" :
+    fenetre = Fenetre(WIN_WIDTH,WIN_HEIGHT)
+    clock.schedule_interval(fenetre.on_update,1/100)
+    pyglet.app.run()
