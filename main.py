@@ -373,14 +373,14 @@ class Fenetre(Window):
         # self.board[6*NB_COLUMNS+5] = 3
         
     def saveHightScore(self):
-        with open("highscores.txt",'w') as f:
+        with open("highscores.txt",'w',encoding="utf-8") as f:
             for hs in self.hightScores:
                 strLi = "{};{}\n".format(hs.name,hs.score)
                 f.write(strLi)
 
     def loadHightScore(self):
         if path.exists("highscores.txt"):
-            with open("highscores.txt",'r') as f:
+            with open("highscores.txt",'r',encoding="utf-8") as f:
                 strLines = f.readlines()
                 i = 0
                 for strL in strLines:
